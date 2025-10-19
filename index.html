@@ -1,34 +1,64 @@
-@media print {
-  @page {
-    size: A4 landscape;
-    /* adjust if you need more/less white border */
-    margin: 10mm;
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lambeth Mosaic Discovery - Executive Summary</title>
+  <style>
+    /* ---------- Screen (unchanged look) ---------- */
+    :root {
+      --screen-slide-w: 960px;
+      --screen-slide-h: 720px;
+      --screen-bg: #1e293b;
+    }
 
-  /* Ensure backgrounds/gradients actually print */
-  html, body {
-    background: #ffffff !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
+    html, body {
+      height: 100%;
+    }
 
-  body {
-    padding: 0 !important;
-    margin: 0 !important;
-  }
+    body {
+      background: var(--screen-bg);
+      padding: 40px;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
 
-  /* Make each slide exactly the printable area inside margins */
-  .slide {
-    /* A4 landscape is 297mm × 210mm.
-       With 10mm page margins, the content box is 277mm × 190mm. */
-    width: 277mm !important;
-    height: 190mm !important;
+    .slide {
+      background: #fff;
+      width: var(--screen-slide-w);
+      height: var(--screen-slide-h);
+      margin: 0 auto 60px auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+    }
 
-    margin: 0 auto !important;
-    box-shadow: none !important;
-    background: #ffffff !important;
+    .header {
+      background: linear-gradient(90deg, #005a7d 0%, #005a7d 70%, rgba(255,255,255,0.3) 100%);
+      padding: 8px 40px;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 100;
+      flex: 0 0 auto;
+    }
 
-    /* Avoid any cropping in print */
-    overflow: visible !important;
+    .header-content { position: relative; z-index: 101; }
+    .header-content h1 {
+      font-size: 26px; font-weight: bold; margin: 0 0 3px 0;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; color: #fff;
+    }
+    .header-content p { margin: 0; color: #93c5fd; font-size: 10px; z-index: 102; }
 
-    /* Strong page break h*
+    .header-logo {
+      background: #fff; padding: 5px 10px; border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; align-items: center; z-index: 101;
+    }
+    .logo-text { display:
